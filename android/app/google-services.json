@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "150257917561",
+    "firebase_url": "https://suta-f12a4.firebaseio.com",
+    "project_id": "suta-f12a4",
+    "storage_bucket": "suta-f12a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150257917561:android:c6ba770efa10789522bea8",
+        "android_client_info": {
+          "package_name": "com.preetmankirat.tutor4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150257917561-kij8b4ngis5n8bpf1ptvgutm5posha9k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.preetmankirat.tutor4u",
+            "certificate_hash": "7947c054898eea02ab93de50d587b9ed7ade80af"
+          }
+        },
+        {
+          "client_id": "150257917561-ikf8qohkc6io4b2rdotnp9k6a9ds5gqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9A0sct3g7UbN0Ha6WR652_J2HWy-wAaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150257917561-ikf8qohkc6io4b2rdotnp9k6a9ds5gqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
