@@ -29,7 +29,7 @@ class _home_PageState extends State<home_Page> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-                child: Text('REGISTRATION'),
+                child: Text('profile'),
                 onPressed: () {
                   Navigator.pushNamed(context, Profile_Page.id);
                 }),
