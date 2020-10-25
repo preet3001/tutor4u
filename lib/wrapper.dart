@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tutor4u/screens/center_page.dart';
 import 'package:tutor4u/services/authentication.dart';
-import 'screens/home.dart';
 import 'screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,7 +11,7 @@ class wrapper extends StatelessWidget {
     try {
       authentication auth = authentication();
       if (FirebaseAuth.instance.currentUser != null) {
-        return home_Page();
+        return CenterPage();
       } else {
         return login_Page();
       }

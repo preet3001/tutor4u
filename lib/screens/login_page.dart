@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tutor4u/constants.dart';
-import 'package:tutor4u/screens/profile_page.dart';
-import 'package:tutor4u/screens/registration_page.dart';
 import 'package:tutor4u/services/authentication.dart';
-import 'package:tutor4u/screens/home.dart';
+
+import 'center_page.dart';
 
 class login_Page extends StatefulWidget {
   static const String id = 'login_page';
@@ -50,7 +49,7 @@ class _login_PageState extends State<login_Page> {
             child: Text('Sign in from Google'),
             onPressed: () async {
               await auth.signinwithgoogle();
-              Navigator.pushNamed(context, home_Page.id);
+              Navigator.pushNamed(context, CenterPage.id);
             },
           ),
         ],

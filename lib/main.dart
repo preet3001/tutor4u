@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutor4u/screens/center_page.dart';
 import 'package:tutor4u/screens/home.dart';
 import 'package:tutor4u/screens/profile_page.dart';
 import 'package:tutor4u/screens/registration_page.dart';
@@ -25,6 +26,7 @@ class tutor4u extends StatelessWidget {
         wrapper.id: (context) => wrapper(),
         home_Page.id: (context) => home_Page(),
         Profile_Page.id: (context) => Profile_Page(),
+        CenterPage.id: (context) =>CenterPage(),
       },
     );
   }
