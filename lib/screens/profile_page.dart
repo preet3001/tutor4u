@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:tutor4u/screens/center_page.dart';
 import 'package:tutor4u/screens/home.dart';
 //import 'package:tutor4u/constants.dart';
 
@@ -92,7 +93,7 @@ class _Profile_PageState extends State<Profile_Page> {
                       RaisedButton(
                         color: Colors.amber,
                         onPressed: () {
-                          Navigator.pushNamed(context, home_Page.id);
+                          Navigator.pushNamed(context, CenterPage.id);
                         },
                         child: Text('Navigate'),
                       ),
