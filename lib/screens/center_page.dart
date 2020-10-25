@@ -10,16 +10,16 @@ class CenterPage extends StatefulWidget {
 
 class _CenterPageState extends State<CenterPage> {
   PageController _pagecontroler = PageController();
-  List<Widget> _Screens=[home_Page(),Profile_Page()];
-  int selectedindex=0;
-  void onpagechanged (int index){
+  List<Widget> _Screens = [home_Page(), Profile_Page()];
+  int selectedindex = 0;
+  void onpagechanged(int index) {
     setState(() {
-      selectedindex=index;
+      selectedindex = index;
     });
   }
-  void onitemchanged (selectedindex){
+
+  void onitemchanged(int selectedindex) {
     _pagecontroler.jumpToPage(selectedindex);
-    print(selectedindex);
   }
 
   @override
@@ -37,24 +37,24 @@ class _CenterPageState extends State<CenterPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: selectedindex==0?Colors.blue:Colors.grey,
+              color: selectedindex == 0 ? Colors.blue : Colors.grey,
             ),
             title: Text(
-                'Home',
-                style: TextStyle(
-                  color: selectedindex==0?Colors.blue:Colors.grey,
-                ),
+              'Home',
+              style: TextStyle(
+                color: selectedindex == 0 ? Colors.blue : Colors.grey,
+              ),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                Icons.photo,
-                color: selectedindex==1?Colors.blue:Colors.grey,
+              Icons.photo,
+              color: selectedindex == 1 ? Colors.blue : Colors.grey,
             ),
             title: Text(
-                'Profile',
+              'Profile',
               style: TextStyle(
-                color: selectedindex==1?Colors.blue:Colors.grey,
+                color: selectedindex == 1 ? Colors.blue : Colors.grey,
               ),
             ),
           ),
