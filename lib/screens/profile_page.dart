@@ -14,6 +14,7 @@ class _Profile_PageState extends State<Profile_Page> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final QualificationController = TextEditingController();
+  final SubjectsController = TextEditingController();
   final DBRef = FirebaseDatabase.instance.reference();
   @override
   Widget build(BuildContext context) {
@@ -66,6 +67,25 @@ class _Profile_PageState extends State<Profile_Page> {
                 ),
               ),
               Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextFormField(
+                  controller: SubjectsController,
+                  decoration: InputDecoration(
+                    labelText: "Enter Teaching Subjects",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter Teaching Subjects';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,11 +97,13 @@ class _Profile_PageState extends State<Profile_Page> {
                             DBRef.push().set({
                               "name": nameController.text,
                               "Qualification": QualificationController.text,
+                              "Subjects": SubjectsController.text,
                             }).then((_) {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text('Successfully Added')));
                               nameController.clear();
                               QualificationController.clear();
+                              SubjectsController.clear();
                             }).catchError((onError) {
                               Scaffold.of(context).showSnackBar(
                                   SnackBar(content: Text(onError)));
@@ -95,7 +117,7 @@ class _Profile_PageState extends State<Profile_Page> {
                         onPressed: () {
                           Navigator.pushNamed(context, CenterPage.id);
                         },
-                        child: Text('Navigate'),
+                        child: Text('Back To Home'),
                       ),
                     ],
                   )),
