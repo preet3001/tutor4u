@@ -20,9 +20,9 @@ class _home_PageState extends State<home_Page> {
           'SUTA',
           textAlign: TextAlign.center,
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white12,
       ),
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.white70,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
