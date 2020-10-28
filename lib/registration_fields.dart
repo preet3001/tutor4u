@@ -3,10 +3,11 @@ import 'package:tutor4u/constants.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'services/authentication.dart';
 
+// ignore: must_be_immutable
 class Fields extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
-
+  // ignore: non_constant_identifier_names
   final DBRef = FirebaseDatabase.instance.reference();
   Fields({@required this.text, this.inti});
   final String text;

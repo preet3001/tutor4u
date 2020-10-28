@@ -10,6 +10,7 @@ class CenterPage extends StatefulWidget {
 
 class _CenterPageState extends State<CenterPage> {
   PageController _pagecontroler = PageController();
+  // ignore: non_constant_identifier_names
   List<Widget> _Screens = [home_Page(), Profile_Page()];
   int selectedindex = 0;
   void onpagechanged(int index) {
@@ -39,7 +40,7 @@ class _CenterPageState extends State<CenterPage> {
               Icons.home,
               color: selectedindex == 0 ? Colors.blue : Colors.grey,
             ),
-            title: Text(
+            title: Text( // ignore: deprecated_member_use
               'Home',
               style: TextStyle(
                 color: selectedindex == 0 ? Colors.blue : Colors.grey,
@@ -51,6 +52,7 @@ class _CenterPageState extends State<CenterPage> {
               Icons.photo,
               color: selectedindex == 1 ? Colors.blue : Colors.grey,
             ),
+            // ignore: deprecated_member_use
             title: Text(
               'Profile',
               style: TextStyle(

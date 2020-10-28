@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+// ignore: camel_case_types
 class authentication {
   bool isSignin;
   final FirebaseAuth _auth = FirebaseAuth.instance;

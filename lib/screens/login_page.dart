@@ -4,12 +4,14 @@ import 'package:tutor4u/services/authentication.dart';
 
 import 'center_page.dart';
 
+// ignore: camel_case_types
 class login_Page extends StatefulWidget {
   static const String id = 'login_page';
   @override
   _login_PageState createState() => _login_PageState();
 }
 
+// ignore: camel_case_types
 class _login_PageState extends State<login_Page> {
   String email;
   String password;

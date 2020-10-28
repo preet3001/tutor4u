@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tutor4u/screens/login_page.dart';
 import 'package:tutor4u/screens/profile_page.dart';
-import 'package:tutor4u/screens/registration_page.dart';
 import 'package:tutor4u/services/authentication.dart';
 
+// ignore: camel_case_types
 class home_Page extends StatefulWidget {
   static const String id = 'home_page';
   @override
   _home_PageState createState() => _home_PageState();
 }
 
+// ignore: camel_case_types
 class _home_PageState extends State<home_Page> {
   final authentication auth = authentication();
   @override
