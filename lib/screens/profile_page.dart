@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tutor4u/screens/center_page.dart';
+import 'package:tutor4u/services/authentication.dart';
 //import 'package:tutor4u/constants.dart';
 
 // ignore: camel_case_types
@@ -20,6 +21,8 @@ class _Profile_PageState extends State<Profile_Page> {
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
   final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final authentication auth = authentication();
   // ignore: non_constant_identifier_names
   final QualificationController = TextEditingController();
   // ignore: non_constant_identifier_names
@@ -51,6 +54,7 @@ class _Profile_PageState extends State<Profile_Page> {
   }
   @override
   Widget build(BuildContext context) {
+    bool _enabled =false;
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -159,6 +163,27 @@ class _Profile_PageState extends State<Profile_Page> {
                       ],
                       textField: 'display',
                       valueField: 'value',
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: TextFormField(
+                      controller: emailController,
+                      enabled: _enabled,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.email_outlined),
+                        labelText: "Enter Email",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      // The validator receives the text that the user has entered.
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter email';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   Padding(
