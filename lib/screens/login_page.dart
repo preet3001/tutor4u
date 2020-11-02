@@ -21,12 +21,19 @@ class _login_PageState extends State<login_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title:Text(
+          'login',
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('login'),
           TextField(
             keyboardType: TextInputType.emailAddress,
+
             textAlign: TextAlign.center,
             onChanged: (value) {
               email = value;
