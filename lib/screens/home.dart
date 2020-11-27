@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tutor4u/screens/login_page.dart';
-import 'package:tutor4u/screens/profile_page.dart';
 import 'package:tutor4u/services/authentication.dart';
-
+import 'package:flutter/cupertino.dart';
+import 'MatchCard.dart';
 // ignore: camel_case_types
 class home_Page extends StatefulWidget {
   static const String id = 'home_page';
@@ -13,8 +12,11 @@ class home_Page extends StatefulWidget {
 // ignore: camel_case_types
 class _home_PageState extends State<home_Page> {
   final authentication auth = authentication();
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(   
         title: Text(
@@ -24,10 +26,18 @@ class _home_PageState extends State<home_Page> {
         backgroundColor: Colors.white12,
       ),
       backgroundColor: Colors.white70,
-      body: Center(
+      body:(
+    Child: Stack(
+      alignment: Alignment.center,
+          children: _getMatchCard(),
+      ),
+    );
+    }
+    void setState(Null Function() param0) {
+    }
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             RaisedButton(
                 child: Text('profile'),
@@ -46,3 +56,4 @@ class _home_PageState extends State<home_Page> {
     );
   }
 }
+

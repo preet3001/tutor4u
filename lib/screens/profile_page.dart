@@ -55,6 +55,7 @@ class _Profile_PageState extends State<Profile_Page> {
   @override
   Widget build(BuildContext context) {
     bool _enabled =false;
+    var menu_book;
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -170,7 +171,7 @@ class _Profile_PageState extends State<Profile_Page> {
                       controller: emailController,
                       enabled: _enabled,
                       decoration: InputDecoration(
-                        icon: Icon(Icons.email_outlined),
+                        icon: Icon(Icons.mail_outline),
                         labelText: "Enter Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -213,7 +214,7 @@ class _Profile_PageState extends State<Profile_Page> {
                       controller: SubjectsController,
                       maxLines: 10,
                       decoration: InputDecoration(
-                        icon: Icon(Icons.menu_book),
+                        icon: Icon(Icons.menu),
                         labelText: "Enter Teaching Subjects",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
