@@ -24,6 +24,12 @@ class _login_PageState extends State<login_Page> {
       appBar: AppBar(
         title:Text(
           'login',
+          style: TextStyle(
+            fontFamily: 'Pacifico',
+            fontSize: 30.0,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue,

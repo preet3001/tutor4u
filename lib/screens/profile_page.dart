@@ -73,9 +73,8 @@ class _Profile_PageState extends State<Profile_Page> {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SizedBox(
-                    height: 150,
-                    width: 200,
+                  CircleAvatar(
+                    radius: 50.0,
                   ),
                   Row(
                     children: [
