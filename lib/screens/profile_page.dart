@@ -4,7 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tutor4u/screens/center_page.dart';
 import 'package:tutor4u/services/authentication.dart';
-//import 'package:tutor4u/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore: camel_case_types
 class Profile_Page extends StatefulWidget {
@@ -29,12 +30,14 @@ class _Profile_PageState extends State<Profile_Page> {
   final SubjectsController = TextEditingController();
   // ignore: non_constant_identifier_names
   final DBRef = FirebaseDatabase.instance.reference();
+  final firestoreInstance = FirebaseFirestore.instance;
   @override
   void initState() {
     super.initState();
     _myActivity = '';
     _myActivityResult = '';
   }
+
   _saveForm() {
     if (_formKey.currentState.validate()) {
       setState(() {
@@ -43,6 +46,7 @@ class _Profile_PageState extends State<Profile_Page> {
       return _myActivityResult;
     }
   }
+
   reset() {
     if (_myActivityResult == _myActivity) {
       setState(() {
@@ -52,9 +56,10 @@ class _Profile_PageState extends State<Profile_Page> {
       return _myActivityResult;
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    bool _enabled =false;
+    bool _enabled = false;
     var menu_book;
     return Scaffold(
       appBar: AppBar(
@@ -240,26 +245,29 @@ class _Profile_PageState extends State<Profile_Page> {
                           RaisedButton(
                             color: Colors.lightBlue,
                             onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                DBRef.push().set({
-                                  "Firstname": firstnameController.text,
-                                  "Lastname": lastnameController.text,
-                                  "Qualification": _saveForm(),
-                                  "PhoneNumber": phoneController.text,
-                                  "Subjects": SubjectsController.text,
-                                }).then((_) {
-                                  Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text('Successfully Added')));
-                                  firstnameController.clear();
-                                  lastnameController.clear();
-                                  reset();
-                                  phoneController.clear();
-                                  SubjectsController.clear();
-                                }).catchError((onError) {
-                                  Scaffold.of(context).showSnackBar(
-                                      SnackBar(content: Text(onError)));
-                                });
-                              }
+                              var firebaseUser =
+                                  FirebaseAuth.instance.currentUser;
+                              firestoreInstance
+                                  .collection("users")
+                                  .doc(firebaseUser.uid)
+                                  .set({
+                                "Firstname": firstnameController.text,
+                                "Lastname": lastnameController.text,
+                                "Qualification": _saveForm(),
+                                "PhoneNumber": phoneController.text,
+                                "Subjects": SubjectsController.text,
+                              }).then((_) {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text('Successfully Added')));
+                                firstnameController.clear();
+                                lastnameController.clear();
+                                reset();
+                                phoneController.clear();
+                                SubjectsController.clear();
+                              }).catchError((onError) {
+                                Scaffold.of(context).showSnackBar(
+                                    SnackBar(content: Text(onError)));
+                              });
                             },
                             child: Text('Submit'),
                           ),
