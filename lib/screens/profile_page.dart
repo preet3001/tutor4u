@@ -1,9 +1,7 @@
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tutor4u/screens/center_page.dart';
-import 'package:tutor4u/services/authentication.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -23,14 +21,13 @@ class _Profile_PageState extends State<Profile_Page> {
   final lastnameController = TextEditingController();
   final phoneController = TextEditingController();
   final adressController = TextEditingController();
-  final authentication auth = authentication();
   // ignore: non_constant_identifier_names
   final QualificationController = TextEditingController();
   // ignore: non_constant_identifier_names
   final SubjectsController = TextEditingController();
   // ignore: non_constant_identifier_names
-  final DBRef = FirebaseDatabase.instance.reference();
   final firestoreInstance = FirebaseFirestore.instance;
+  var firebaseUser = FirebaseAuth.instance.currentUser;
   @override
   void initState() {
     super.initState();
@@ -82,6 +79,7 @@ class _Profile_PageState extends State<Profile_Page> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: CircleAvatar(
+                      backgroundImage: NetworkImage(firebaseUser.photoURL),
                       radius: 100.0,
                     ),
                   ),
@@ -244,8 +242,6 @@ class _Profile_PageState extends State<Profile_Page> {
                           RaisedButton(
                             color: Colors.lightBlue,
                             onPressed: () {
-                              var firebaseUser =
-                                  FirebaseAuth.instance.currentUser;
                               firestoreInstance
                                   .collection("users")
                                   .doc(firebaseUser.uid)
