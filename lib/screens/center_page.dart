@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tutor4u/screens/profile_page.dart';
 import 'home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CenterPage extends StatefulWidget {
+  var firebaseUser = FirebaseAuth.instance.currentUser;
   static const String id = 'centerpage';
   @override
   _CenterPageState createState() => _CenterPageState();
@@ -11,7 +13,7 @@ class CenterPage extends StatefulWidget {
 class _CenterPageState extends State<CenterPage> {
   PageController _pagecontroler = PageController();
   // ignore: non_constant_identifier_names
-  List<Widget> _Screens = [home_Page(), Profile_Page()];
+  List<Widget> _Screens = [home_Page(currentUserId: FirebaseAuth.instance.currentUser.uid,), Profile_Page()];
   int selectedindex = 0;
   void onpagechanged(int index) {
     setState(() {
@@ -25,6 +27,7 @@ class _CenterPageState extends State<CenterPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: PageView(
         controller: _pagecontroler,
