@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "150257917561-0msdei3njv87gmu2eilhphcg05q6f9gd.apps.googleusercontent.com",
+          "client_id": "150257917561-kij8b4ngis5n8bpf1ptvgutm5posha9k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.preetmankirat.tutor4u",
-            "certificate_hash": "bb903c06f6765f4a924b0ab11e6815ba3e5ca890"
+            "certificate_hash": "7947c054898eea02ab93de50d587b9ed7ade80af"
           }
         },
         {

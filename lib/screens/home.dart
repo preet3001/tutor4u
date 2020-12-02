@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tutor4u/screens/login_page.dart';
 import 'package:tutor4u/screens/profile_page.dart';
 import 'package:tutor4u/services/authentication.dart';
-import 'package:flutter/cupertino.dart';
 
 // ignore: camel_case_types
 class home_Page extends StatefulWidget {
@@ -17,36 +16,35 @@ class _home_PageState extends State<home_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'SUTA',
-            textAlign: TextAlign.center,
-          ),
-          backgroundColor: Colors.white12,
+      appBar: AppBar(
+        title: Text(
+          'SUTA',
+          textAlign: TextAlign.center,
         ),
-        backgroundColor: Colors.white70,
-        body: Center(
+        backgroundColor: Colors.white12,
+      ),
+      backgroundColor: Colors.white70,
+      body: Center(
+        child: SingleChildScrollView(
           child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        RaisedButton(
-            child: Text('profile'),
-            onPressed: () {
-              Navigator.pushNamed(context, Profile_Page.id);
-            }),
-        RaisedButton(
-            child: Text('SIGN OUT'),
-            onPressed: () async {
-              await auth.signoutgoogle();
-              Navigator.pushNamed(context, login_Page.id);
-            })
-      ],
-    )
-    ,
-    )
-    ,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              RaisedButton(
+                  child: Text('profile'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, Profile_Page.id);
+                  }),
+              RaisedButton(
+                  child: Text('SIGN OUT'),
+                  onPressed: () async {
+                    await auth.signoutgoogle();
+                    Navigator.pushNamed(context, login_Page.id);
+                  })
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
