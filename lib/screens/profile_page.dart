@@ -22,7 +22,7 @@ class _Profile_PageState extends State<Profile_Page> {
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
   final phoneController = TextEditingController();
-  final emailController = TextEditingController();
+  final adressController = TextEditingController();
   final authentication auth = authentication();
   // ignore: non_constant_identifier_names
   final QualificationController = TextEditingController();
@@ -60,7 +60,7 @@ class _Profile_PageState extends State<Profile_Page> {
   @override
   Widget build(BuildContext context) {
     bool _enabled = false;
-    var menu_book;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -176,11 +176,10 @@ class _Profile_PageState extends State<Profile_Page> {
                   Padding(
                     padding: EdgeInsets.all(20.0),
                     child: TextFormField(
-                      controller: emailController,
-                      enabled: _enabled,
+                      controller: adressController,
                       decoration: InputDecoration(
-                        icon: Icon(Icons.mail_outline),
-                        labelText: "Enter Email",
+                        icon: Icon(Icons.home),
+                        labelText: "Enter address",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
