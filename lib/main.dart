@@ -7,6 +7,7 @@ import 'package:tutor4u/wrapper.dart';
 import 'screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/pro.dart';
+import 'screens/chat.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +28,9 @@ class tutor4u extends StatelessWidget {
         wrapper.id: (context) => wrapper(),
         home_Page.id: (context) => home_Page(),
         Profile_Page.id: (context) => Profile_Page(),
-        CenterPage.id: (context) =>CenterPage(),
-        teacher_profile.id: (context) =>teacher_profile(),
-
+        CenterPage.id: (context) => CenterPage(),
+        teacher_profile.id: (context) => teacher_profile(),
+        Chat.id: (context) => Chat(),
       },
     );
   }
