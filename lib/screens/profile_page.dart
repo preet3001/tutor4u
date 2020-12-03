@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:tutor4u/screens/center_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore: camel_case_types
 class Profile_Page extends StatefulWidget {
@@ -28,6 +30,8 @@ class _Profile_PageState extends State<Profile_Page> {
   // ignore: non_constant_identifier_names
   final firestoreInstance = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
+  SharedPreferences prefs;
+  User currentUser;
   @override
   void initState() {
     super.initState();
@@ -258,18 +262,8 @@ class _Profile_PageState extends State<Profile_Page> {
                                     .millisecondsSinceEpoch
                                     .toString(),
                                 'chattingWith': null,
-                              }).then((_) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                    content: Text('Successfully Added')));
-                                firstnameController.clear();
-                                lastnameController.clear();
-                                reset();
-                                phoneController.clear();
-                                SubjectsController.clear();
-                              }).catchError((onError) {
-                                Scaffold.of(context).showSnackBar(
-                                    SnackBar(content: Text(onError)));
                               });
+                              Fluttertoast.showToast(msg: "Sign in success");
                             },
                             child: Text('Submit'),
                           ),
