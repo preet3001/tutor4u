@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:tutor4u/services/location.dart';
 // ignore: camel_case_types
 class Profile_Page extends StatefulWidget {
   static const String id = 'Profile_Page';
@@ -28,6 +28,9 @@ class _Profile_PageState extends State<Profile_Page> {
   // ignore: non_constant_identifier_names
   final SubjectsController = TextEditingController();
   // ignore: non_constant_identifier_names
+  Location location = Location();
+  String longitude;
+  String latitude;
   final firestoreInstance = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
   SharedPreferences prefs;
@@ -85,6 +88,19 @@ class _Profile_PageState extends State<Profile_Page> {
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(firebaseUser.photoURL),
                       radius: 100.0,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: FlatButton(
+                      child: Icon(Icons.gps_fixed_sharp),
+                      onPressed: ()async{
+                        await location.getCurrentLocation();
+                        setState(() {
+                        });
+                      },
+                      disabledColor: Colors.blue,
+                      focusColor: Colors.blueGrey,
                     ),
                   ),
                   Row(
@@ -255,6 +271,8 @@ class _Profile_PageState extends State<Profile_Page> {
                                 "Qualification": _saveForm(),
                                 "PhoneNumber": phoneController.text,
                                 "Subjects": SubjectsController.text,
+                                "longitude": location.longitude.toString(),
+                                "lattitude": location.latitude.toString(),
                                 'nickname': firebaseUser.displayName,
                                 'photoUrl': firebaseUser.photoURL,
                                 'id': firebaseUser.uid,
