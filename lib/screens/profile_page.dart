@@ -251,6 +251,13 @@ class _Profile_PageState extends State<Profile_Page> {
                                 "Qualification": _saveForm(),
                                 "PhoneNumber": phoneController.text,
                                 "Subjects": SubjectsController.text,
+                                'nickname': firebaseUser.displayName,
+                                'photoUrl': firebaseUser.photoURL,
+                                'id': firebaseUser.uid,
+                                'createdAt': DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString(),
+                                'chattingWith': null,
                               }).then((_) {
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                     content: Text('Successfully Added')));
