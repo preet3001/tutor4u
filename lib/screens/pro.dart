@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tutor4u/screens/chat.dart';
+
 class teacher_profile extends StatelessWidget {
   static const String id = 'teacher_profile';
   @override
@@ -16,9 +18,10 @@ class teacher_profile extends StatelessWidget {
             ),
             Expanded(
               child: GestureDetector(
-                child: Icon(Icons.message_rounded),
-              ),
-
+                  child: Icon(Icons.message_rounded),
+                  onTap: () {
+                    Navigator.pushNamed(context, Chat.id);
+                  }),
             ),
           ],
         ),
