@@ -32,6 +32,20 @@ class _home_PageState extends State<home_Page> {
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, login_Page.id);
+                },
+                child: Icon(
+                  Icons.logout,
+                  size: 26.0,
+                ),
+              )
+          ),
+        ],
       ),
       backgroundColor: Colors.white70,
       body: WillPopScope(
@@ -130,8 +144,7 @@ class _home_PageState extends State<home_Page> {
             ],
           ),
           onPressed: () {
-            Navigator.pushNamed(context, teacher_profile.id);
-          },
+            Navigator.push(context, MaterialPageRoute(builder: (context){return teacher_profile(teacherid:document.data()['id']);}));          },
           color: Colors.teal,
           padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 10.0),
           shape:

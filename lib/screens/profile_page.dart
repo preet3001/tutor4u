@@ -10,12 +10,36 @@ import 'package:tutor4u/services/location.dart';
 // ignore: camel_case_types
 class Profile_Page extends StatefulWidget {
   static const String id = 'Profile_Page';
+  final firestoreInstance = FirebaseFirestore.instance;
+  var firebaseUser = FirebaseAuth.instance.currentUser;
+  Map Data;
+  Future<dynamic> fetchUserData() async {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseUser.uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        print('Document data: ${documentSnapshot.data()}');
+        Data=documentSnapshot.data();
+      } else {
+        print('Document does not exist on the database');
+      }
+    });
+  }
+  Profile_Page(){
+    fetchUserData();
+  }
   @override
-  _Profile_PageState createState() => _Profile_PageState();
+  _Profile_PageState createState() => _Profile_PageState(data: Data);
 }
 
 // ignore: camel_case_types
 class _Profile_PageState extends State<Profile_Page> {
+  _Profile_PageState({Key key, @required this.data});
+  Map data;
+  final firestoreInstance = FirebaseFirestore.instance;
+  var firebaseUser = FirebaseAuth.instance.currentUser;
   String _myActivity;
   String _myActivityResult;
   final _formKey = GlobalKey<FormState>();
@@ -28,10 +52,6 @@ class _Profile_PageState extends State<Profile_Page> {
   // ignore: non_constant_identifier_names
   final SubjectsController = TextEditingController();
   // ignore: non_constant_identifier_names
-  String longitude;
-  String latitude;
-  final firestoreInstance = FirebaseFirestore.instance;
-  var firebaseUser = FirebaseAuth.instance.currentUser;
   Location location = Location();
   SharedPreferences prefs;
   User currentUser;
@@ -39,6 +59,8 @@ class _Profile_PageState extends State<Profile_Page> {
   void initState() {
     super.initState();
     getlocation();
+    firstnameController.text=data['firstname'];
+    print(firstnameController.text);
     _myActivity = '';
     _myActivityResult = '';
   }
@@ -65,6 +87,7 @@ class _Profile_PageState extends State<Profile_Page> {
       });
       return _myActivityResult;
     }
+
   }
 
   @override
@@ -102,6 +125,7 @@ class _Profile_PageState extends State<Profile_Page> {
                       child: Icon(Icons.gps_fixed_sharp),
                       onPressed: (){
                         setState(() {
+                          print(data['Firstname']);
                           print(location.longitude);
                           print(location.latitude);
                         });

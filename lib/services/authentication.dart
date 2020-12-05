@@ -45,6 +45,8 @@ class authentication {
     }
   }
 
+
+
   String getuid() {
     print(email);
     return email;
