@@ -28,18 +28,24 @@ class _Profile_PageState extends State<Profile_Page> {
   // ignore: non_constant_identifier_names
   final SubjectsController = TextEditingController();
   // ignore: non_constant_identifier_names
-  Location location = Location();
   String longitude;
   String latitude;
   final firestoreInstance = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
+  Location location = Location();
   SharedPreferences prefs;
   User currentUser;
   @override
   void initState() {
     super.initState();
+    getlocation();
     _myActivity = '';
     _myActivityResult = '';
+  }
+  void getlocation()async{
+    await location.getCurrentLocation();
+    print(location.longitude);
+    print(location.latitude);
   }
 
   _saveForm() {
@@ -94,9 +100,10 @@ class _Profile_PageState extends State<Profile_Page> {
                     alignment: Alignment.bottomRight,
                     child: FlatButton(
                       child: Icon(Icons.gps_fixed_sharp),
-                      onPressed: ()async{
-                        await location.getCurrentLocation();
+                      onPressed: (){
                         setState(() {
+                          print(location.longitude);
+                          print(location.latitude);
                         });
                       },
                       disabledColor: Colors.blue,
