@@ -28,6 +28,20 @@ class Chat extends StatelessWidget {
           style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.logout,
+                  size: 26.0,
+                ),
+              )
+          ),
+        ],
       ),
       body: ChatScreen(
         peerId: peerId,

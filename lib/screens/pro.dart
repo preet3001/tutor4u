@@ -17,38 +17,40 @@ class teacher_profile extends StatelessWidget {
         title: Text('Teacher Profile'),
         centerTitle: true,
       ),
-      body: Container(
-        color: Colors.white70,
-        child: Column(
-          children: [
-            Container(
-              child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('users')
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor:
-                        AlwaysStoppedAnimation<Color>(Colors.blue),
-                      ),
-                    );
-                  } else {
-                    return ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      padding: EdgeInsets.all(10.0),
-                      itemBuilder: (context, index) =>
-                          buildItem(context, snapshot.data.documents[index]),
-                      itemCount: snapshot.data.documents.length,
-                    );
-                  }
-                },
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white70,
+          child: Column(
+            children: [
+              Container(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
+                      );
+                    } else {
+                      return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.all(10.0),
+                        itemBuilder: (context, index) =>
+                            buildItem(context, snapshot.data.documents[index]),
+                        itemCount: snapshot.data.documents.length,
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
 
-          ],
+            ],
+          ),
         ),
       ),
     );
