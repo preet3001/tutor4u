@@ -46,6 +46,7 @@ class _Profile_PageState extends State<Profile_Page> {
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
   final areaController = TextEditingController();
+  final enrollController = TextEditingController();
   final phoneController = TextEditingController();
   final adressController = TextEditingController();
   // ignore: non_constant_identifier_names
@@ -186,7 +187,7 @@ class _Profile_PageState extends State<Profile_Page> {
                     child: TextFormField(
                       controller: areaController,
                       decoration: InputDecoration(
-                        labelText: "area Name",
+                        labelText: "area in meters",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -195,6 +196,25 @@ class _Profile_PageState extends State<Profile_Page> {
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'area to search';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      controller: enrollController,
+                      decoration: InputDecoration(
+                        labelText: "enroll as student or techer",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                      // The validator receives the text that the user has entered.
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'enroll';
                         }
                         return null;
                       },
@@ -320,6 +340,7 @@ class _Profile_PageState extends State<Profile_Page> {
                                 "Firstname": firstnameController.text,
                                 "Lastname": lastnameController.text,
                                 "area": areaController.text,
+                                "enroll": enrollController.text,
                                 "Qualification": _saveForm(),
                                 "PhoneNumber": phoneController.text,
                                 "Subjects": SubjectsController.text,
